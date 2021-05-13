@@ -4,10 +4,14 @@ public class Calculator {
 
     public int Add(String numbers) {
 
+        int sum = -1;
         if (numbers.isEmpty()) {
-            return 0;
+            sum = 0;
+        }
+        else {
+            sum = Integer.parseInt(numbers);
         }
 
-        return -1;
+        return sum;
     }
 }
