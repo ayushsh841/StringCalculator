@@ -28,6 +28,20 @@ public class CalculatorTest {
         assertEquals(expectedSum, result);
     }
 
+    //Given: I provide string as null
+    //When: I call the Add method
+    //Then: I get the sum as -1
+    @Test
+    public void Add_GivenStringAs_Null_ReturnsSumAs_Neg1()
+    {
+        String input = null;
+        int expectedSum = -1;
+
+        int result = calculator.Add(input);
+
+        assertEquals(expectedSum, result);
+    }
+
     //Given: I provide string as 1
     //When: I call the Add method
     //Then: I get the sum as 1
@@ -140,14 +154,14 @@ public class CalculatorTest {
         assertEquals(expectedSum, result);
     }
 
-    //Given: I provide string as null
+    //Given: I provide string as 1,2,3
     //When: I call the Add method
-    //Then: I get the sum as -1
+    //Then: I get the sum as 6
     @Test
-    public void Add_GivenStringAs_Null_ReturnsSumAs_Neg1()
+    public void Add_GivenStringAs_1_2_3_ReturnsSumAs_6()
     {
-        String input = null;
-        int expectedSum = -1;
+        String input = "1,2,3";
+        int expectedSum = 6;
 
         int result = calculator.Add(input);
 
