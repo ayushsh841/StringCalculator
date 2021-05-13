@@ -195,4 +195,18 @@ public class CalculatorTest {
 
         assertEquals(expectedSum, result);
     }
+
+    //Given: I provide string as 1\n2,3,4
+    //When: I call the Add method
+    //Then: I get the sum as 10
+    @Test
+    public void Add_GivenStringAs_1_2_3_4_WithNewLine_ReturnsSumAs_10()
+    {
+        String input = "1\n2,3,4";
+        int expectedSum = 10;
+
+        int result = calculator.Add(input);
+
+        assertEquals(expectedSum, result);
+    }
 }
