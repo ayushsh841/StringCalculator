@@ -11,18 +11,23 @@ public class Calculator {
                 sum = 0;
             }
             else if (numbers.contains(",")) {
-                int separatorIndex = numbers.indexOf(",");
-
-                String num1 = numbers.substring(0, separatorIndex);
-                String num2 = numbers.substring(separatorIndex + 1, numbers.length());
-
-                sum = Integer.parseInt(num1) + Integer.parseInt(num2);
+                String[] splitNums = numbers.split(",");
+                sum = GetSum(splitNums);
             }
             else {
                 sum = Integer.parseInt(numbers);
             }
         }
 
+        return sum;
+    }
+
+    public static int GetSum(String[] numbers) {
+        int sum = 0;
+
+        for(String number : numbers) {
+            sum += Integer.parseInt(number);
+        }
 
         return sum;
     }
