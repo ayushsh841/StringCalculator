@@ -9,8 +9,10 @@ public class Calculator {
             sum = 0;
         }
         else if (numbers.contains(",")) {
-            sum = Integer.parseInt(String.valueOf(numbers.charAt(0)))
-                    + Integer.parseInt(String.valueOf(numbers.charAt(2)));
+            int separatorIndex = numbers.indexOf(",");
+            String num1 = numbers.substring(0, separatorIndex);
+            sum = Integer.parseInt(num1) +
+                    Integer.parseInt(String.valueOf(numbers.charAt(separatorIndex + 1)));
         }
         else {
             sum = Integer.parseInt(numbers);

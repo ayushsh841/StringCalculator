@@ -58,12 +58,12 @@ public class CalculatorTest {
 
     //Given: I provide string as 11,1
     //When: I call the Add method
-    //Then: I get the sum as 13
+    //Then: I get the sum as 12
     @Test
-    public void Add_GivenStringAs_11_1_ReturnsSumAs_13()
+    public void Add_GivenStringAs_11_1_ReturnsSumAs_12()
     {
         String input = "11,1";
-        int expectedSum = 13;
+        int expectedSum = 12;
 
         int result = calculator.Add(input);
 
