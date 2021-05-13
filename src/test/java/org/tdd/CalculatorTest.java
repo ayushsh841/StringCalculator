@@ -55,4 +55,18 @@ public class CalculatorTest {
 
         assertEquals(expectedSum, result);
     }
+
+    //Given: I provide string as 11,1
+    //When: I call the Add method
+    //Then: I get the sum as 13
+    @Test
+    public void Add_GivenStringAs_11_1_ReturnsSumAs_13()
+    {
+        String input = "11,1";
+        int expectedSum = 13;
+
+        int result = calculator.Add(input);
+
+        assertEquals(expectedSum, result);
+    }
 }
