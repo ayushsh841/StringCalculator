@@ -1,5 +1,7 @@
 package org.tdd;
 
+import java.util.ArrayList;
+
 public class Calculator {
 
     public int Add(String numbers) {
@@ -10,12 +12,9 @@ public class Calculator {
             {
                 sum = 0;
             }
-            else if (numbers.contains(",")) {
-                String[] splitNums = numbers.split(",");
-                sum = GetSum(splitNums);
-            }
             else {
-                sum = Integer.parseInt(numbers);
+                String[] splitNums = GetSeparatedNumbers(numbers);
+                sum = GetSum(splitNums);
             }
         }
 
@@ -26,9 +25,16 @@ public class Calculator {
         int sum = 0;
 
         for(String number : numbers) {
-            sum += Integer.parseInt(number);
+            if (!number.isEmpty())
+                sum += Integer.parseInt(number);
         }
 
         return sum;
+    }
+
+    public static String[] GetSeparatedNumbers(String numbers) {
+        String[] splittedNums = numbers.split(",|\n");
+
+        return splittedNums;
     }
 }
