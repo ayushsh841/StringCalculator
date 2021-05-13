@@ -83,4 +83,74 @@ public class CalculatorTest {
 
         assertEquals(expectedSum, result);
     }
+
+    //Given: I provide string as 123,456
+    //When: I call the Add method
+    //Then: I get the sum as 579
+    @Test
+    public void Add_GivenStringAs_123_456_ReturnsSumAs_579()
+    {
+        String input = "123,456";
+        int expectedSum = 579;
+
+        int result = calculator.Add(input);
+
+        assertEquals(expectedSum, result);
+    }
+
+    //Given: I provide string as -1,-1
+    //When: I call the Add method
+    //Then: I get the sum as -2
+    @Test
+    public void Add_GivenStringAs_Neg_1_1_ReturnsSumAs_Neg_2()
+    {
+        String input = "-1,-1";
+        int expectedSum = -2;
+
+        int result = calculator.Add(input);
+
+        assertEquals(expectedSum, result);
+    }
+
+    //Given: I provide string as 0,0
+    //When: I call the Add method
+    //Then: I get the sum as 0
+    @Test
+    public void Add_GivenStringAs_0_0_ReturnsSumAs_0()
+    {
+        String input = "0,0";
+        int expectedSum = 0;
+
+        int result = calculator.Add(input);
+
+        assertEquals(expectedSum, result);
+    }
+
+    //Given: I provide string as -123,124
+    //When: I call the Add method
+    //Then: I get the sum as 1
+    @Test
+    public void Add_GivenStringAs_Neg123_Pos124_ReturnsSumAs_1()
+    {
+        String input = "-123,124";
+        int expectedSum = 1;
+
+        int result = calculator.Add(input);
+
+        assertEquals(expectedSum, result);
+    }
+
+    //Given: I provide string as null
+    //When: I call the Add method
+    //Then: I get the sum as -1
+    @Test
+    public void Add_GivenStringAs_Null_ReturnsSumAs_Neg1()
+    {
+        String input = null;
+        int expectedSum = -1;
+
+        int result = calculator.Add(input);
+
+        assertEquals(expectedSum, result);
+    }
 }
