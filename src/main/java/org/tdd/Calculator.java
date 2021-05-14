@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class Calculator {
 
-    private static final String customDelimiterRegex = "//(.)\n(.*)";
+    private static final String customDelimiterRegex = "//(.*)\n(.*)";
     private static final int maxValue = 1000;
 
     public int Add(String numbers) {
@@ -89,7 +89,7 @@ public class Calculator {
         String delimiter = matcher.group(1);
         String values = matcher.group(2);
 
-        return values.split(delimiter);
+        return values.split(Pattern.quote(delimiter));
     }
 
     private static String[] SplitWithDefinedDelimiter(String numbers) {
