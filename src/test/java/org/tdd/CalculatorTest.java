@@ -228,4 +228,18 @@ public class CalculatorTest {
 
         assertEquals(expectedSum, result);
     }
+
+    //Given: I provide string as 1,1001
+    //When: I call the Add method
+    //Then: I get the sum as 1
+    @Test
+    public void Add_GivenStringAs_1_1001_ReturnsSumAs_1()
+    {
+        String input = "1,1001";
+        int expectedSum = 1;
+
+        int result = calculator.Add(input);
+
+        assertEquals(expectedSum, result);
+    }
 }
