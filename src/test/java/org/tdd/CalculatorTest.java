@@ -249,7 +249,7 @@ public class CalculatorTest {
     @Test
     public void Add_GivenStringWithDelimeterLengthGreaterThan1_ReturnsSumAs_6()
     {
-        String input = "//****\\n1****2****3";
+        String input = "//****\n1****2****3";
         int expectedSum = 6;
 
         int result = calculator.Add(input);
