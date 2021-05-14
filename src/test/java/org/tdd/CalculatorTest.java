@@ -1,7 +1,9 @@
 package org.tdd;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,6 +15,9 @@ public class CalculatorTest {
     public void SetUp() {
         calculator = new Calculator();
     }
+
+    @Rule
+    public ExpectedException exception = ExpectedException.none();
 
     //Given: I provide an empty string
     //When: I call the Add method
@@ -114,16 +119,16 @@ public class CalculatorTest {
 
     //Given: I provide string as -1,-1
     //When: I call the Add method
-    //Then: I get the sum as -2
+    //Then: I get exception with listed negative numbers
     @Test
-    public void Add_GivenStringAs_Neg_1_1_ReturnsSumAs_Neg_2()
+    public void Add_GivenStringAs_Neg_1_1_ThrowsException()
     {
         String input = "-1,-1";
-        int expectedSum = -2;
 
-        int result = calculator.Add(input);
+        exception.expect(RuntimeException.class);
+        exception.expectMessage("negatives not allowed - -1, -1");
 
-        assertEquals(expectedSum, result);
+        calculator.Add(input);
     }
 
     //Given: I provide string as 0,0
@@ -142,16 +147,16 @@ public class CalculatorTest {
 
     //Given: I provide string as -123,124
     //When: I call the Add method
-    //Then: I get the sum as 1
+    //Then: I get exception with listed negative numbers
     @Test
-    public void Add_GivenStringAs_Neg123_Pos124_ReturnsSumAs_1()
+    public void Add_GivenStringAs_Neg123_Pos124_ThrowsException()
     {
         String input = "-123,124";
-        int expectedSum = 1;
 
-        int result = calculator.Add(input);
+        exception.expect(RuntimeException.class);
+        exception.expectMessage("negatives not allowed - -123");
 
-        assertEquals(expectedSum, result);
+        calculator.Add(input);
     }
 
     //Given: I provide string as 1,2,3
