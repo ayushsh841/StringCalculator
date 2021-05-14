@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 public class Calculator {
 
     private static final String customDelimiterRegex = "//(.)\n(.*)";
+    private static final int maxValue = 1000;
 
     public int Add(String numbers) {
 
@@ -41,7 +42,8 @@ public class Calculator {
         int total = 0;
 
         for (Integer value : numbers)
-            total += value;
+            if (value < maxValue)
+                total += value;
 
         return total;
     }
