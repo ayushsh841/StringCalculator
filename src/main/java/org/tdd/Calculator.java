@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 
 public class Calculator {
 
-    private static final String customDelimiterRegex = "//(.*)\n(.*)";
     private static final int maxValue = 1000;
 
     public int Add(String numbers) {
@@ -73,27 +72,40 @@ public class Calculator {
     public static List<String> GetSeparatedNumbers(String numbers) {
         List<String> splittedNums;
 
-        if(numbers.startsWith("//")) {
-            splittedNums = Arrays.asList(SplitWithCustomDelimiter(numbers));
-        } else {
-            splittedNums = Arrays.asList(SplitWithDefinedDelimiter(numbers));
-        }
+        splittedNums = Arrays.asList(SplitByDelimiter(numbers));
 
         return splittedNums;
     }
 
-    private static String[] SplitWithCustomDelimiter(String numbers) {
-        Matcher matcher = Pattern.compile(customDelimiterRegex).matcher(numbers);
-        matcher.matches();
+    private static String[] SplitByDelimiter(String numbers) {
+        String pattern = GetPattern(numbers);
 
-        String delimiter = matcher.group(1);
-        String values = matcher.group(2);
+        numbers = numbers.substring(numbers.indexOf("\n") + 1);
+        String compiledPattern = Pattern.compile("\\|")
+                                        .splitAsStream(pattern)
+                                        .map(Pattern::quote)
+                                        .collect(Collectors.joining("|"));
 
-        return values.split(Pattern.quote(delimiter));
+        return numbers.split(compiledPattern);
     }
 
-    private static String[] SplitWithDefinedDelimiter(String numbers) {
+    private static String GetPattern(String numbers) {
 
-        return numbers.split(",|\n");
+        String pattern = ",|\n";
+
+        if (numbers.charAt(2) == '[') {
+            while (numbers != "") {
+                if (numbers.startsWith("\n")) {
+                    numbers = "";
+                }
+                 else {
+                    String delimiter = numbers.substring(numbers.indexOf('[') + 1, numbers.indexOf(']'));
+                    pattern += "|" + delimiter;
+                    numbers = numbers.substring(numbers.indexOf(']') + 1);
+                }
+            }
+        }
+
+        return pattern;
     }
 }
