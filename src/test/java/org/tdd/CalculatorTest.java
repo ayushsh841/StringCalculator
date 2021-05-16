@@ -247,9 +247,23 @@ public class CalculatorTest {
     //When: I call the Add method
     //Then: I get the sum as 6
     @Test
-    public void Add_GivenStringWithDelimeterLengthGreaterThan1_ReturnsSumAs_6()
+    public void Add_GivenStringWithDelimiterLengthGreaterThan1_ReturnsSumAs_6()
     {
         String input = "//****\n1****2****3";
+        int expectedSum = 6;
+
+        int result = calculator.Add(input);
+
+        assertEquals(expectedSum, result);
+    }
+
+    //Given: I provide string as //[*][%]\n1*2%3
+    //When: I call the Add method
+    //Then: I get the sum as 6
+    @Test
+    public void Add_GivenStringWithMultipleDelimiterLengthAs1_ReturnsSumAs_6()
+    {
+        String input = "//[*][%]\n1*2%3";
         int expectedSum = 6;
 
         int result = calculator.Add(input);
